@@ -1,0 +1,66 @@
+body{
+   margin:0;
+}
+
+
+header{
+   display:flex;
+   align-items: center;
+   background-color: blanchedalmond;
+}
+ul{
+   display: flex;
+   align-items: center;
+   margin-left: 50%;
+}
+li{
+margin:2rem 5rem
+}
+/* Css Aticles solo*/
+.article_solo{
+   text-align: center;
+   border: 2px black solid;
+}
+.article_solo p{
+   width: 60%;
+   margin-left: 20vw;
+
+
+}
+.article_solo img{
+   width: 80%;
+}
+/* Css page accueil*/
+.container{
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+
+}
+.article_home{
+   padding: 2rem;
+   max-width: 40vw;
+   margin: 1rem;
+   border: 2px solid black;
+
+}
+.article_home img{
+   width: 100%;
+}
+
+.articles_total{
+   padding: 2rem;
+   max-width: 40vw;
+   margin: 1rem;
+   border: 2px solid black;
+}
+
+.articles_total img{
+   width: 100%;
+}
+
+footer{
+   background-color: blanchedalmond;
+   height: 5rem;
+}
+

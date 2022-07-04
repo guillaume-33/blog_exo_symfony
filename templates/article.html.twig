@@ -1,0 +1,13 @@
+{% include "_header.html.twig" %}
+
+      {% if article.isPublished %}
+
+          <article class="article_solo">
+              <h2> {{ article.title }}</h2>
+              <p>{{ article.description }}</p>
+              <img src="{{ article.image }}" alt="image article" >
+              <p> {{ article.publishedAt|date('d/m/y') }}</p>
+          </article>
+      {% endif %}
+
+{% include "_footer.html.twig" %}
