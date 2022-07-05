@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use PhpParser\Node\Stmt\Return_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
@@ -54,5 +56,17 @@ class HomeController extends AbstractController
         return  $this->render("home.html.twig",[
                          'dernierArticles' => $dernierArticles,
         ]);
+    }
+
+    public function age(Request $request){
+
+        $age = $request->query->get("age");
+            if(age>= 18){
+                return $this ->render("articles.html.twig");
+            }
+            else{
+                return new Response("interdit aux mineur!!!");
+            }
+
     }
 }

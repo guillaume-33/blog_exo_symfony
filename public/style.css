@@ -2,7 +2,9 @@ body{
    margin:0;
 }
 
-
+h1{
+   text-align: center;
+}
 header{
    display:flex;
    align-items: center;
@@ -53,6 +55,7 @@ margin:2rem 5rem
    max-width: 40vw;
    margin: 1rem;
    border: 2px solid black;
+
 }
 
 .articles_total img{
@@ -62,5 +65,49 @@ margin:2rem 5rem
 footer{
    background-color: blanchedalmond;
    height: 5rem;
+}
+input {
+   display:block;
+   width:100%;
+   margin:10px 0;
+   padding:10px;
+   border-radius:10px;
+   border: 1px solid #eee;
+   transition: .3s border-color;
+}
+
+input:hover{
+   border: 1px solid #aaa;
+}
+
+form{
+   width: 300px;
+}
+
+button{
+   /* remove default behavior */
+   appearance:none;
+   -webkit-appearance:none;
+
+   /* usual styles */
+   padding:10px;
+   border:none;
+   background-color:#413F54;
+   color:#fff;
+   font-weight:600;
+   border-radius:5px;
+   width:50%;
+   transition:all ease-in-out 0.3s ;
+}
+
+button:hover{
+   opacity:80%;
+   cursor:pointer;
+
+}
+
+.formulaire{
+  margin-left: 40vw;
+
 }
 

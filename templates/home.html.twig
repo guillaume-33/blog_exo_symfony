@@ -1,9 +1,20 @@
-{%  include "_header.html.twig" %}
+{% extends "base.html.twig" %}
+
+{% block main %}
 <h1> Accueil</h1>
+<div class="formulaire">
+<form action="" method="GET">
+
+    <label for="age"> Entrez votre age</label>
+    <input type="text" name="age" id="age">
+    <button>Validation</button>
+
+</form>
+</div>
+
 <div class="container" >
 {%for article in dernierArticles %}
     {% if article.isPublished %}
-
                 <article class="article_home">
                     <h2> {{ article.title }}</h2>
                     <p>{{ article.description }}</p>
@@ -15,4 +26,5 @@
     {% endif %}
 {% endfor %}
 </div>
-{% include "_footer.html.twig" %}
+    {% endblock %}
+
