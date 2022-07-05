@@ -1,8 +1,9 @@
 {% extends "base.html.twig" %}
-
+{% block title %}
+<title> {{ article.title }}</title>
+{% endblock %}
     {% block main %}
       {% if article.isPublished %}
-
           <article class="article_solo">
               <h2> {{ article.title }}</h2>
               <p>{{ article.description }}</p>
@@ -10,5 +11,8 @@
               <p> {{ article.publishedAt|date('d/m/y') }}</p>
           </article>
       {% endif %}
-
     {% endblock %}
+
+ {% block footer %}
+    <h2> {{ article.title }}</h2>
+ {% endblock %}

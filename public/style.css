@@ -7,16 +7,19 @@ h1{
 }
 header{
    display:flex;
-   align-items: center;
+   align-items: flex-end;
    background-color: blanchedalmond;
+
+
 }
 ul{
    display: flex;
-   align-items: center;
-   margin-left: 50%;
+   margin-left: 70vw;
 }
 li{
-margin:2rem 5rem
+margin:1rem;
+list-style: none;
+
 }
 /* Css Aticles solo*/
 .article_solo{
