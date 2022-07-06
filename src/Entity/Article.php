@@ -5,7 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity() // permet de déclarer que les classes seront des entités
+ * @ORM\Entity() // permet de déclarer que les classes/objets seront des entités/tables
  */
 class Article // le nom de notre table(entité) TOUJOURS AVEC lA PREMIERE LETTRE EN MAJ !!!!
 {
