@@ -62,7 +62,7 @@ class ArticlesController extends AbstractController
      * @Route ("/insert-article" , name ="insert-article")
      */
     // je créé une nouvelle methode pour la création de nouveaux articles
-    // Grace a EntituManager qui est un service Doctrine qui nous permet de manipuler des entités (Entity)
+    // Grace a EntityManager qui est un service Doctrine qui nous permet de manipuler des entités (Entity)
     public function insertArticles(EntityManagerInterface $entityManager){
 
 
