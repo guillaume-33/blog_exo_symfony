@@ -2,49 +2,108 @@
 
 namespace App\Entity;
 
+use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity() // permet de déclarer que les classes/objets seront des entités/tables
+ * @ORM\Entity(repositoryClass=ArticleRepository::class)
  */
-class Article // le nom de notre table(entité) TOUJOURS AVEC lA PREMIERE LETTRE EN MAJ !!!!
+class Article
 {
-    /** on declare toujours les 'attributs' avant l'entrée.
-     * @ORM\Id() // on commence par déclarer l'id de notre table
-     * @ORM\GeneratedValue()// on definie que l'id sera en auto incremente
-     * @ORM\Column(type="integer") //et qu'elle sera de type integer
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
-    public $id;
-
+    private $id;
 
     /**
-     * @ORM\Column(type="string") // declarer en "string" revient a declarer que la colone sera en varchar 255.
+     * @ORM\Column(type="string", length=255)
      */
-    public $title;
-
+    private $tilte;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=255)
      */
-    public $image;
-
+    private $image;
 
     /**
-     * @ORM\Column(type="boolean") //pour vérifier si vrai
+     * @ORM\Column(type="boolean")
      */
-    public $isPublished;
-
+    private $isPublished;
 
     /**
-     * @ORM\Column (type="string")
+     * @ORM\Column(type="string", length=255)
      */
-    public $autor;
+    private $author;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $content;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getTilte(): ?string
+    {
+        return $this->tilte;
+    }
+
+    public function setTilte(string $tilte): self
+    {
+        $this->tilte = $tilte;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function isIsPublished(): ?bool
+    {
+        return $this->isPublished;
+    }
+
+    public function setIsPublished(bool $isPublished): self
+    {
+        $this->isPublished = $isPublished;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?string
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(string $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    public function setContent(string $content): self
+    {
+        $this->content = $content;
+
+        return $this;
+    }
 }
-
-//- mappez ces propriétés avec les annotations @ORM
-//- générez la requête SQL (migration) avec php bin/console make:migration
-//- exécutez la migration en bdd pour créer la table avec php bin/console doctrine:migration:migrate
-
-//Création ou modif d'une entité (classe avec les annotaiton @ORM)
-//- php bin/console make:migration pour générer la requête SQL (pour créer / modifier la /les tables)
-//- php bin/console doctrine:migration:migrate pour envoyer la requête SQL en bdd
