@@ -31,6 +31,9 @@ class CategoryController extends AbstractController
     }
 // code commenté ==> ArticlesController
 
+    /**
+     *@Route("category" , name="category")
+     */
 public function categorieRepository(CategoryRepository $categoryRepository){
         $categori = $categoryRepository->find(1);
 
