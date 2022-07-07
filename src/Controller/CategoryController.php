@@ -14,8 +14,7 @@ class CategoryController extends AbstractController
     /**
      * @Route("categorie",name="categorie")
      */
-
-    public function category(EntityManagerInterface $entityManager){
+public function category(EntityManagerInterface $entityManager){
 
         $category =new Category();
 
@@ -47,8 +46,8 @@ public function categoriesinsert(CategoryRepository $categoryRepository){
      */
 public function categories(CategoryRepository $categoryRepository){
     $categories=$categoryRepository->findAll();
-    return $this ->render('categories.html.twig',[
-                    'categories'=> $categories]);
+        return $this ->render('categories.html.twig',[
+            'categories'=> $categories]);
 
 }
 
@@ -57,8 +56,7 @@ public function categories(CategoryRepository $categoryRepository){
      */
 public function categorie($id,CategoryRepository $categoryRepository){
     $categorie=$categoryRepository ->find($id);
-    return $this ->render('categorie.html.twig', [
-                        'categorie'=>$categorie
-    ]);
+        return $this ->render('categorie.html.twig', [
+            'categorie'=>$categorie]);
 }
 }
