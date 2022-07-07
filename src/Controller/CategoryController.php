@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,4 +30,10 @@ class CategoryController extends AbstractController
         dd($category);
     }
 // code commenté ==> ArticlesController
+
+public function categorieRepository(CategoryRepository $categoryRepository){
+        $categori = $categoryRepository->find(1);
+
+        dd($categori);
+}
 }
