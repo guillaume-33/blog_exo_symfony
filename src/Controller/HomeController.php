@@ -17,6 +17,10 @@ class HomeController extends AbstractController
 
 
         $dernierArticles= $articleRepository->findBy([], ['id'=>'DESC'],3);
+                            // Findby permet de chercher une données avec certains criteres.
+                            // Ici, je cherche dans tout les article []
+                            // par ID en Descendent ['id'=>'DESC']
+                            // pour trois article 3 (etant une donnée INT et non en string
 
         return  $this->render("home.html.twig",[
                          'dernierArticles' => $dernierArticles,
