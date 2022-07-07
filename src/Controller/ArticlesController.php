@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use \Symfony\Component\HttpFoundation;
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use http\Env\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -91,6 +93,21 @@ class ArticlesController extends AbstractController
         $entityManager->persist($article); //equivalent git add . et commit (on charge les données)
         $entityManager->flush(); //equivalent push (on envoie les données)
     }
+
+        /**
+         * @Route("delete/article/{id}", name="delete_article")
+         */
+        public function deleteArticle($id,ArticleRepository $articleRepository , EntityManagerInterface $entityManager){
+            $article=$articleRepository->find($id); // on recuêre l'ID de l'article a supprimer
+                if (!is_null($article)){ //on verifie si l'id de l'article existe toujours si oui :
+                    $entityManager->remove($article); // on le supprime
+                    $entityManager->flush();    // et on 'confirme' a la BDD
+
+                    return new HttpFoundation\Response("article supprimé");
+                }else{ // si l'article est deja supprimé, on obtient un message qui nous le précise. 
+                    return new HttpFoundation\Response("Article déja supprimé");
+                }
+        }
 
 
 
