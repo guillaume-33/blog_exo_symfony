@@ -1,0 +1,8 @@
+{% extends 'base.html.twig'%}
+{% block main %}
+
+    {% if categorie.isPublished %}
+        <h2 style="color:{{ categorie.color }}">{{ categorie.title }}</h2>
+        <p>{{ categorie.description }}</p>
+    {% endif %}
+{% endblock %}

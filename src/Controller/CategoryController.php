@@ -34,10 +34,31 @@ class CategoryController extends AbstractController
     /**
      *@Route("category" , name="category")
      */
-public function categorieRepository(CategoryRepository $categoryRepository){
+public function categoriesinsert(CategoryRepository $categoryRepository){
         $categori = $categoryRepository->find(1);
 
         dd($categori);
         // commentaire la methode sur ArticleSoloController
+}
+
+
+    /**
+     * @Route ("categories" , name="categories")
+     */
+public function categories(CategoryRepository $categoryRepository){
+    $categories=$categoryRepository->findAll();
+    return $this ->render('categories.html.twig',[
+                    'categories'=> $categories]);
+
+}
+
+    /**
+     * @Route("categorie/{id}" , name ="categorie")
+     */
+public function categorie($id,CategoryRepository $categoryRepository){
+    $categorie=$categoryRepository ->find($id);
+    return $this ->render('categorie.html.twig', [
+                        'categorie'=>$categorie
+    ]);
 }
 }

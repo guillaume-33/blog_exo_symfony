@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block main %}
+
+    {% for categorie in categories %}
+        {% if categorie.isPublished %}
+            <h2 style="color:{{ categorie.color }}">{{ categorie.title }}</h2>
+            <p>{{ categorie.description }}</p>
+        {% endif %}
+        <a href="{{ path('categorie', {'id': categorie.id}) }}">En savoir plus</a>
+    {% endfor %}
+
+e{% endblock %}
