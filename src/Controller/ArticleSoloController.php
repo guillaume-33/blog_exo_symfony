@@ -22,6 +22,7 @@ class ArticleSoloController extends AbstractController
         $article= $articleRepository ->find($id);
         //"find" permet de récuperer l'id de la table selectionnée
 
+        //puis on renvoie sur la page twig
         return $this->render('article.html.twig',
             ['article'=> $article]);
     }

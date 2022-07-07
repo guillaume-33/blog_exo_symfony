@@ -14,9 +14,10 @@ class ArticlesController extends AbstractController
     /**
      * @Route ("/articles",name="articles")
      */
-
+        // j'appel les article depuis la BDD
     public function articlesRepository(ArticleRepository $articlesRepository){
         $articles= $articlesRepository->findAll();
+        // et l=je les renvoie sur ma page twig
         return $this->render('articles.html.twig', [
             'articles' => $articles]);
     }
