@@ -17,7 +17,7 @@ class HomeController extends AbstractController
 
 
         $dernierArticles= $articleRepository->findBy([], ['id'=>'DESC'],3);
-                            // FindBy permet de chercher une donnée avec certains criteres.
+                            // FindBy permet de chercher une donnée dans la BDD avec certains criteres.
                             // Ici, je cherche dans tout les articles []
                             // par ID en Descendent ['id'=>'DESC']
                             // pour trois article: (3 etant une donnée INT et non en string)
