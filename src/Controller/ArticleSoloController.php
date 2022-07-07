@@ -1,17 +1,28 @@
 <?php
 
 namespace App\Controller;
+use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ArticleSoloController extends AbstractController
 {
-    /**
-     * @Route("/article/{id}", name="article")
-     */
+//    /**
+//     * @Route("/article/{id}", name="article")
+//     */
 
-    public function articleSolo($id)
+    /**
+     * @Route("article", name="article")
+     */
+//------ nouvelles route dans will card grace aux données récupérées via ArticleRepository.
+//methode qui va "remplacer" le SELECT FROM WHERE
+// on appel une instance de la classe ArticleRepository
+    public function articleSolo(ArticleRepository $articleRepository)
     {
+        $article= $articleRepository ->find(1);
+        //"find" permet de récuperer l'id de la table selectionnée
+
+        dd($article);
 
         $articles = [
             1 => [

@@ -28,5 +28,5 @@ class CategoryController extends AbstractController
 
         dd($category);
     }
-
+// code commenté ==> ArticlesController
 }
