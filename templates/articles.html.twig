@@ -9,10 +9,10 @@
    {%for article in articles %}
         {% if article.isPublished %}
             <article class="articles_total">
-                <h2> {{ article.title }}</h2>
-                <p>{{ article.description }}</p>
+                <h2> {{ article.tilte }}</h2>
+                <p>{{ article.content }}</p>
                 <img src="{{ article.image }}" alt="image article" >
-                <p> {{ article.publishedAt|date('d/m/y') }}</p>
+
                 <a href="{{ path('article', {'id': article.id}) }}"> en savoir plus</a>
             </article>
         {% endif %}

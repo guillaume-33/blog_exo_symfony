@@ -1,18 +1,18 @@
 {% extends "base.html.twig" %}
 {% block title %}
-<title> {{ article.title }}</title>
+<title> {{ article.tilte }}</title>
 {% endblock %}
     {% block main %}
       {% if article.isPublished %}
           <article class="article_solo">
-              <h2> {{ article.title }}</h2>
-              <p>{{ article.description }}</p>
+              <h2> {{ article.tilte }}</h2>
+              <p>{{ article.content }}</p>
               <img src="{{ article.image }}" alt="image article" >
-              <p> {{ article.publishedAt|date('d/m/y') }}</p>
+
           </article>
       {% endif %}
     {% endblock %}
 
  {% block footer %}
-    <h2> {{ article.title }}</h2>
+    <h2> {{ article.tilte }}</h2>
  {% endblock %}
