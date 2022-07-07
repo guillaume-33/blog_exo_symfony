@@ -14,7 +14,7 @@ class CategoryController extends AbstractController
     /**
      * @Route("categorie",name="categorie")
      */
-public function category(EntityManagerInterface $entityManager){
+    public function category(EntityManagerInterface $entityManager){
 
         $category =new Category();
 
@@ -33,30 +33,32 @@ public function category(EntityManagerInterface $entityManager){
     /**
      *@Route("category" , name="category")
      */
-public function categoriesinsert(CategoryRepository $categoryRepository){
+    public function categoriesinsert(CategoryRepository $categoryRepository){
         $categori = $categoryRepository->find(1);
 
         dd($categori);
         // commentaire la methode sur ArticleSoloController
-}
+    }
 
 
     /**
      * @Route ("categories" , name="categories")
      */
-public function categories(CategoryRepository $categoryRepository){
-    $categories=$categoryRepository->findAll();
-        return $this ->render('categories.html.twig',[
-            'categories'=> $categories]);
+    public function categories(CategoryRepository $categoryRepository){
+        $categories=$categoryRepository->findAll();
+            return $this ->render('categories.html.twig',[
+                'categories'=> $categories
+            ]);
 
-}
+    }
 
     /**
      * @Route("categorie/{id}" , name ="categorie")
      */
-public function categorie($id,CategoryRepository $categoryRepository){
-    $categorie=$categoryRepository ->find($id);
-        return $this ->render('categorie.html.twig', [
-            'categorie'=>$categorie]);
-}
+    public function categorie($id,CategoryRepository $categoryRepository){
+        $categorie=$categoryRepository ->find($id);
+            return $this ->render('categorie.html.twig', [
+                'categorie'=>$categorie
+            ]);
+    }
 }
