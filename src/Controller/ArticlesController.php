@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -63,10 +64,11 @@ class ArticlesController extends AbstractController
      */
     // je créé une nouvelle methode pour la création de nouveaux articles
     // Grace a EntityManager qui est un service Doctrine qui nous permet de manipuler des entités (Entity)
-    public function insertArticles(EntityManagerInterface $entityManager){
+    public function insertArticles(EntityManagerInterface $entityManager)
+    {
 
 
-        $article=new Article();
+        $article = new Article();
 
         //je reintegre les données voulue grace au seter
         $article->setTilte("toto a la plage");
@@ -78,8 +80,15 @@ class ArticlesController extends AbstractController
         //grace a entitymanager, je peux directement enregistrer les données dans la BDD dans la table article
         $entityManager->persist($article); //equivalent git add . et commit (on charge les données)
         $entityManager->flush(); //equivalent push (on envoie les données)
-
-        dd($article);
     }
 
+        /**
+         * @Route ("/nos_articles",name="nos_articles")
+         */
+
+        public function articlesRepository(ArticleRepository $articlesRepository){
+                $articles= $articlesRepository->findAll();
+                dd($articles);
+        }
+        
 }
