@@ -14,7 +14,7 @@ class ArticleSoloController extends AbstractController
     /**
      * @Route("article", name="article")
      */
-//------ nouvelles route dans will card grace aux données récupérées via ArticleRepository.
+//------ nouvelle route sans will card grace aux données récupérées via ArticleRepository.
 //methode qui va "remplacer" le SELECT FROM WHERE
 // on appel une instance de la classe ArticleRepository
     public function articleSolo(ArticleRepository $articleRepository)
