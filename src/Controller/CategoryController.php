@@ -38,5 +38,6 @@ public function categorieRepository(CategoryRepository $categoryRepository){
         $categori = $categoryRepository->find(1);
 
         dd($categori);
+        // commentaire la methode sur ArticleSoloController
 }
 }
