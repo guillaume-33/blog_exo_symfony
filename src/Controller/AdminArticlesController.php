@@ -49,7 +49,10 @@ class AdminArticlesController extends AbstractController
         //grace a entitymanager, je peux directement enregistrer les données dans la BDD dans la table article
         $entityManager->persist($article); //equivalent git add . et commit (on charge les données)
         $entityManager->flush(); //equivalent push (on envoie les données)
+        $this->addFlash('success', 'article créé');
         return $this->redirectToRoute('admin_articles');//redirige sur la page des artocles une fois fini
+
+
     }
 
         /**
@@ -57,16 +60,16 @@ class AdminArticlesController extends AbstractController
          */
         public function deleteArticle($id,ArticleRepository $articleRepository , EntityManagerInterface $entityManager){
             $article=$articleRepository->find($id); // on recuêre l'ID de l'article a supprimer
-                if (!is_null($article)){ //on verifie si l'id de l'article existe toujours si oui :
-                    $entityManager->remove($article); // on le supprime
-                    $entityManager->flush();    // et on 'confirme' a la BDD
+            if (!is_null($article)){ //on verifie si l'id de l'article existe toujours si oui :
+                $entityManager->remove($article); // on le supprime
+                $entityManager->flush();    // et on 'confirme' a la BDD
 
-                    $this->addFlash('success', 'article supprimé'); // pour afficher un message confirmant que c'est modifier.
-                    return $this->redirectToRoute('home'); //renvoie a la page accueil
-                }else{ // si l'article est deja supprimé, on obtient un message qui nous le précise.
-                    return new HttpFoundation\Response("Article déja supprimé");
-                }
+                $this->addFlash('success', 'article supprimé'); // pour afficher un message confirmant que c'est modifier.
+                return $this->redirectToRoute('home'); //renvoie a la page accueil
+            }else{ // si l'article est deja supprimé, on obtient un message qui nous le précise.
+                $this->addFlash('error', 'article déjà supprimé');
 
+            }
 
         }
 
@@ -88,9 +91,9 @@ class AdminArticlesController extends AbstractController
     /**
      * @Route("/admin/article/{id}", name="admin_article")
      */
-//------ nouvelle route sans will card grace aux données récupérées via ArticleRepository.
-//methode qui va "remplacer" le SELECT FROM WHERE
-// on appel une instance de la classe ArticleRepository
+    //------ nouvelle route sans will card grace aux données récupérées via ArticleRepository.
+    //methode qui va "remplacer" le SELECT FROM WHERE
+    // on appel une instance de la classe ArticleRepository
     public function articleSolo(ArticleRepository $articleRepository, $id)
     {
         $article= $articleRepository ->find($id);

@@ -132,3 +132,11 @@ button:hover{
    color: white;
 }
 
+.alert-success{
+   background-color: green;
+}
+
+.alert-error{
+   background-color: red;
+}
+

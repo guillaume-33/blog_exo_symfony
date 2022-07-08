@@ -2,20 +2,16 @@
 
 {% block main %}
 <h1> Accueil</h1>
+
 <div class="formulaire">
 <form action="" method="GET">
-
     <label for="age"> Entrez votre age</label>
     <input type="text" name="age" id="age">
     <button>Validation</button>
-
 </form>
+
 </div>
-    {% for message in app.flashes('success') %}
-        <div class="alert alert-success">
-        {{ message }}
-        </div>
-    {% endfor %}
+
 <div class="container" >
 {%for article in dernierArticles %}
     {% if article.isPublished %}
