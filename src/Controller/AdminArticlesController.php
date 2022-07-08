@@ -49,7 +49,7 @@ class AdminArticlesController extends AbstractController
         //grace a entitymanager, je peux directement enregistrer les données dans la BDD dans la table article
         $entityManager->persist($article); //equivalent git add . et commit (on charge les données)
         $entityManager->flush(); //equivalent push (on envoie les données)
-        $this->addFlash('success', 'article créé');
+        $this->addFlash('success', 'article créé');// message envoyé si succés
         return $this->redirectToRoute('admin_articles');//redirige sur la page des artocles une fois fini
 
 
