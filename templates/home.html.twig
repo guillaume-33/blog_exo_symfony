@@ -26,6 +26,9 @@
     {% endif %}
 {% endfor %}
 </div>
+    {% for message in app.flashes('success') %}
+    
+    {% endfor %}
 {% endblock %}
 
 {% block footer %}

@@ -104,9 +104,24 @@ class ArticlesController extends AbstractController
                     $entityManager->flush();    // et on 'confirme' a la BDD
 
                     return new HttpFoundation\Response("article supprimé");
-                }else{ // si l'article est deja supprimé, on obtient un message qui nous le précise. 
+                }else{ // si l'article est deja supprimé, on obtient un message qui nous le précise.
                     return new HttpFoundation\Response("Article déja supprimé");
                 }
+        }
+
+    /**
+     * @Route("/update/article/{id}", name="update_article")
+     */
+        public function updateArticle($id,ArticleRepository $articleRepository, EntityManagerInterface $entityManager){
+
+            $article=$articleRepository->find($id);
+            $article->setTilte('toto cherche son pere');
+
+            $entityManager->persist($article);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'article modifié');
+           return $this->redirectToRoute('home'); //renvoie a la page accueil
         }
 
 
