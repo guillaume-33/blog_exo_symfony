@@ -114,13 +114,13 @@ class ArticlesController extends AbstractController
      */
         public function updateArticle($id,ArticleRepository $articleRepository, EntityManagerInterface $entityManager){
 
-            $article=$articleRepository->find($id);
-            $article->setTilte('toto cherche son pere');
+            $article=$articleRepository->find($id); //on recherche l'article par son ID
+            $article->setTilte('toto cherche son pere'); // on modifie son titre
 
-            $entityManager->persist($article);
-            $entityManager->flush();
+            $entityManager->persist($article); // on "enregistre la modif"
+            $entityManager->flush(); // on l'envoie sur la BDD
 
-            $this->addFlash('success', 'article modifié');
+            $this->addFlash('success', 'article modifié'); // pour afficher un message confirmant que c'est modifier.
            return $this->redirectToRoute('home'); //renvoie a la page accueil
         }
 
