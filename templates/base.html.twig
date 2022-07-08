@@ -18,12 +18,12 @@
         </ul>
     </header>
 
-{% for message in app.flashes('success') %}
+{% for message in app.flashes('success') %} // message envoyé si succés de l'operation
     <div class="alert-success">
         {{ message }}
     </div>
 {% endfor %}
-{% for message in app.flashes('success') %}
+{% for message in app.flashes('error') %}
     <div class="alert-error">
         {{ message }}
     </div>
