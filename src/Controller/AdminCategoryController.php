@@ -61,4 +61,16 @@ class AdminCategoryController extends AbstractController
                 'categorie'=>$categorie
             ]);
     }
+
+    /**
+     * @Route("admin/categorie/delete/{id}" , name="admin_delete_categorie")
+     */
+
+    public function deleteCategorie($id, CategoryRepository $categoryRepository, EntityManagerInterface $entityManager){
+            $categorie=$categoryRepository->find($id);
+                $entityManager->remove($categorie);
+                $entityManager->flush();
+            $this->addFlash('success', 'categorie supprimée'); // pour afficher un message confirmant que c'est modifier.
+            return $this->redirectToRoute('admin_categories'); //renvoie a la page accueil
+    }
 }

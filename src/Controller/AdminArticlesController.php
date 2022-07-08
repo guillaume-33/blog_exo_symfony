@@ -103,10 +103,13 @@ class AdminArticlesController extends AbstractController
                     $entityManager->remove($article); // on le supprime
                     $entityManager->flush();    // et on 'confirme' a la BDD
 
-                    return new HttpFoundation\Response("article supprimé");
+                    $this->addFlash('success', 'article modifié'); // pour afficher un message confirmant que c'est modifier.
+                    return $this->redirectToRoute('home'); //renvoie a la page accueil
                 }else{ // si l'article est deja supprimé, on obtient un message qui nous le précise.
                     return new HttpFoundation\Response("Article déja supprimé");
                 }
+
+
         }
 
     /**
