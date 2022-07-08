@@ -24,7 +24,7 @@
                     <p>{{ article.content }}</p>
                     <img src="{{ article.image }}" alt="image article" >
 
-                    <a href="{{ path('admin_article', {'id': article.id}) }}"> en savoir plus</a>
+                    <a class="btn" href="{{ path('admin_article', {'id': article.id}) }}"> en savoir plus</a>
                 </article>
 
     {% endif %}

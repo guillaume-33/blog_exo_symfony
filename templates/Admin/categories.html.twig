@@ -6,8 +6,8 @@
             <h2 style="color:{{ categorie.color }}">{{ categorie.title }}</h2>
             <p>{{ categorie.description }}</p>
         {% endif %}
-        <a href="{{ path('admin_categorie', {'id': categorie.id}) }}">En savoir plus</a>
-        <a href="{{ path('admin_delete_categorie' , {'id':categorie.id})  }}"> Supprimer la categorie</a>
+        <a class="btn" href="{{ path('admin_categorie', {'id': categorie.id}) }}">En savoir plus</a>
+        <a class="btn" href="{{ path('admin_delete_categorie' , {'id':categorie.id})  }}"> Supprimer la categorie</a>
     {% endfor %}
 
 {% endblock %}

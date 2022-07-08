@@ -5,9 +5,12 @@
     {% block main %}
       {% if article.isPublished %}
           <article class="article_solo">
+              <a class="btn"href="{{ path('admin_update_article',{'id': article.id}) }}">Modifier l'article</a>
+              <a class="btn"href="{{ path('admin_delete_article',{'id': article.id}) }}">Supprimer l'article</a>
               <h2> {{ article.tilte }}</h2>
               <p>{{ article.content }}</p>
               <img src="{{ article.image }}" alt="image article" >
+
 
           </article>
       {% endif %}

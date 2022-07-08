@@ -115,3 +115,20 @@ button:hover{
 
 }
 
+.btn {
+   margin-top: 5rem;
+   display: inline;
+   border: solid 1px #ff4676;
+   padding: 7px 20px;
+   border-radius: 3px;
+   font-weight: 700;
+   color: #ff4676;
+   text-decoration: none;
+   text-transform: uppercase;
+}
+
+.btn:hover {
+   background-color: #ff4676;
+   color: white;
+}
+
