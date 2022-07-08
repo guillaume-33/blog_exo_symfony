@@ -12,7 +12,7 @@ class ArticleSoloController extends AbstractController
 //     */
 
     /**
-     * @Route("article/{id}", name="article")
+     * @Route("/admin/article/{id}", name="admin_article")
      */
 //------ nouvelle route sans will card grace aux données récupérées via ArticleRepository.
 //methode qui va "remplacer" le SELECT FROM WHERE

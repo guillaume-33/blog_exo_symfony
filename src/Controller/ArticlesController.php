@@ -14,7 +14,7 @@ class ArticlesController extends AbstractController
 {
 
     /**
-     * @Route ("/articles",name="articles")
+     * @Route ("/admin/articles",name="admin_articles")
      */
         // j'appel les article depuis la BDD
     public function articlesRepository(ArticleRepository $articlesRepository){
@@ -24,7 +24,7 @@ class ArticlesController extends AbstractController
             'articles' => $articles]);
     }
 //    /**
-//     * @Route("/articles", name="articles")
+//     * @Route("/admin/articles", name="admin_articles")
 //     */
 //    public function articles()
 //    {
@@ -73,7 +73,7 @@ class ArticlesController extends AbstractController
 
     // nouvelle route pour la creation des articles
     /**
-     * @Route ("/insert-article" , name ="insert-article")
+     * @Route ("/admin/insert-article" , name ="admin_insert_article")
      */
     // je créé une nouvelle methode pour la création de nouveaux articles
     // Grace a EntityManager qui est un service Doctrine qui nous permet de manipuler des entités (Entity)
@@ -95,7 +95,7 @@ class ArticlesController extends AbstractController
     }
 
         /**
-         * @Route("delete/article/{id}", name="delete_article")
+         * @Route("/admindelete/article/{id}", name="admin_delete_article")
          */
         public function deleteArticle($id,ArticleRepository $articleRepository , EntityManagerInterface $entityManager){
             $article=$articleRepository->find($id); // on recuêre l'ID de l'article a supprimer
@@ -110,7 +110,7 @@ class ArticlesController extends AbstractController
         }
 
     /**
-     * @Route("/update/article/{id}", name="update_article")
+     * @Route("/admin/update/article/{id}", name="admin_update_article")
      */
         public function updateArticle($id,ArticleRepository $articleRepository, EntityManagerInterface $entityManager){
 
