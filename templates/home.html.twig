@@ -11,7 +11,11 @@
 
 </form>
 </div>
-
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
 <div class="container" >
 {%for article in dernierArticles %}
     {% if article.isPublished %}
@@ -26,9 +30,7 @@
     {% endif %}
 {% endfor %}
 </div>
-    {% for message in app.flashes('success') %}
-    
-    {% endfor %}
+
 {% endblock %}
 
 {% block footer %}
