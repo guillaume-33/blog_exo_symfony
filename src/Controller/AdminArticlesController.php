@@ -10,7 +10,7 @@ use http\Env\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ArticlesController extends AbstractController
+class AdminArticlesController extends AbstractController
 {
 
     /**
@@ -20,7 +20,7 @@ class ArticlesController extends AbstractController
     public function articlesRepository(ArticleRepository $articlesRepository){
         $articles= $articlesRepository->findAll();
         // et l=je les renvoie sur ma page twigx
-        return $this->render('articles.html.twig', [
+        return $this->render('admin/articles.html.twig', [
             'articles' => $articles]);
     }
 //    /**

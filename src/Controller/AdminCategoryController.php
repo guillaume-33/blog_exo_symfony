@@ -8,11 +8,11 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CategoryController extends AbstractController
+class AdminCategoryController extends AbstractController
 {
 
     /**
-     * @Route("categorie",name="categorie")
+     * @Route("/admin/categorie",name="admin_categorie")
      */
     public function category(EntityManagerInterface $entityManager){
 
@@ -31,7 +31,7 @@ class CategoryController extends AbstractController
 // code commenté ==> ArticlesController
 
     /**
-     *@Route("category" , name="category")
+     *@Route("admin/category" , name="admin_category")
      */
     public function categoriesinsert(CategoryRepository $categoryRepository){
         $categori = $categoryRepository->find(1);
@@ -42,22 +42,22 @@ class CategoryController extends AbstractController
 
 
     /**
-     * @Route ("categories" , name="categories")
+     * @Route ("admin/categories" , name="admin_categories")
      */
     public function categories(CategoryRepository $categoryRepository){
         $categories=$categoryRepository->findAll();
-            return $this ->render('categories.html.twig',[
+            return $this ->render('admin/categories.html.twig',[
                 'categories'=> $categories
             ]);
 
     }
 
     /**
-     * @Route("categorie/{id}" , name ="categorie")
+     * @Route("admin/categorie/{id}" , name ="admin_categorie")
      */
     public function categorie($id,CategoryRepository $categoryRepository){
         $categorie=$categoryRepository ->find($id);
-            return $this ->render('categorie.html.twig', [
+            return $this ->render('admin/categorie.html.twig', [
                 'categorie'=>$categorie
             ]);
     }

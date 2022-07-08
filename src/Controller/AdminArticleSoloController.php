@@ -5,7 +5,7 @@ use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ArticleSoloController extends AbstractController
+class AdminArticleSoloController extends AbstractController
 {
 //    /**
 //     * @Route("/article/{id}", name="article")
@@ -23,7 +23,7 @@ class ArticleSoloController extends AbstractController
         //"find" permet de récuperer l'id de la table selectionnée
 
         //puis on renvoie sur la page twig
-        return $this->render('article.html.twig',
+        return $this->render('admin/article.html.twig',
             ['article'=> $article]);
     }
 
