@@ -12,7 +12,7 @@ class AdminCategoryController extends AbstractController
 {
 
     /**
-     * @Route("/admin/categorie",name="admin_categorie")
+     * @Route("/admin/categorie",name="admin_insert_categorie")
      */
     public function category(EntityManagerInterface $entityManager){
 
@@ -68,9 +68,11 @@ class AdminCategoryController extends AbstractController
 
     public function deleteCategorie($id, CategoryRepository $categoryRepository, EntityManagerInterface $entityManager){
             $categorie=$categoryRepository->find($id);
-                $entityManager->remove($categorie);
-                $entityManager->flush();
-            $this->addFlash('success', 'categorie supprimée'); // pour afficher un message confirmant que c'est modifier.
-            return $this->redirectToRoute('admin_categories'); //renvoie a la page accueil
+                $entityManager->remove($categorie);//sauvegarde
+                $entityManager->flush();// envoie ver la BDD
+            $this->addFlash('success', 'categorie supprimée'); // pour afficher un message confirmant que c'est suppirmé.
+            return $this->redirectToRoute('admin_categories'); //renvoie a la page des categories
     }
+
+
 }

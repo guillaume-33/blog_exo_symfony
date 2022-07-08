@@ -4,8 +4,8 @@
  {% endblock %}
 {% block main %}
 <h1>Nos articles</h1>
+    <a class="btn" href="{{ path('admin_insert_article') }}"> Créer article</a>
 <div class="container">
-
    {%for article in articles %}
         {% if article.isPublished %}
             <article class="articles_total">

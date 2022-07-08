@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block main %}
-
+    <a class="btn" href="{{ path('admin_insert_categorie') }}">Créer categorie</a>
     {% for categorie in categories %}
         {% if categorie.isPublished %}
             <h2 style="color:{{ categorie.color }}">{{ categorie.title }}</h2>
