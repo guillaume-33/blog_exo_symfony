@@ -17,7 +17,7 @@ class CategorieType extends AbstractType
             ->add('color')
             ->add('description')
             ->add('isPublished')
-            ->add('submit',SubmitType::class)
+            ->add('Confirmer',SubmitType::class)
         ;
     }
 

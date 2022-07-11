@@ -16,14 +16,26 @@ class AdminCategoryController extends AbstractController
     /**
      * @Route("/admin/categorie",name="admin_insert_categorie")
      */
-    public function category(EntityManagerInterface $entityManager){
+    public function category(EntityManagerInterface $entityManager, Request $request){
         //on créé un 'gabarit' via cmd avec "php bin/console make:form"
         $category =new Category();
+
         $form=$this->createForm( CategorieType::class,$category);//permet de créer automatiquement un formulaire avec les infos qui sont sur la table dans la BDD
         // on le renvoi vers une page twig qui contiendra la commande {{ form(form) }} pour afficher le formulaire
+
+
+        $form->handleRequest($request);//on créé une instance de la calasse request a ce qui est dans le formulaire pour que celui ci puisse récuperer les données des champs remplis et faire des enregirstrement sue l'entity articles automatiquement.
+
+        //on verifie que l'article a été envoyé et est valide ( avec toutes les infos nécessaires) puis en on enregistre avec  persist et on enregistre avec flush.
+        if($form->isSubmitted() && $form->isValid()){
+            $entityManager->persist($category);
+            $entityManager->flush();
+            $this->addFlash('success', 'Categorie enregistré');
+        }
         return $this->render('admin/insert_categorie.html.twig',[
-            'form'=>$form->createView()]
+                'form'=>$form->createView()]
         );
+
 
 //        $category->setIsPublished(true);
 //        $category->setColor("red");

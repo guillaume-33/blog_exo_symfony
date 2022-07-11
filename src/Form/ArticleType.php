@@ -18,7 +18,7 @@ class ArticleType extends AbstractType
             ->add('isPublished')
             ->add('author')
             ->add('content')
-            ->add('submit',SubmitType::class)
+            ->add('Confirmer',SubmitType::class)
         ;
     }
 
