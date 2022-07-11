@@ -85,15 +85,17 @@ class AdminCategoryController extends AbstractController
 
         $title = $request->query->get('titre');// on verifie avant toute chose ce qui est envoyé en get
         $color = $request->query->get('color');// on verifie avant toute chose ce qui est envoyé en get
-
-        if(!empty($title) &&//on verifie ce qui a ete envoyé en get, si il n'y a rien on fait la suite!
-            !empty($color)) {
+        $content=$request->query->get('contenu');//on verifie avant toute chose ce qui est envoyé en get
+        
+        if(!empty($title) &&
+            !empty($color)) {//on verifie ce qui a ete envoyé en get, si il n'y a rien on fait la suite!
 
             $categorie = $categoryRepository->find($id); //cherche la categorie par l'id
 
             $categorie->setTitle($title); //modifie le titre
 
             $categorie->setColor($color); // modifie la couleur
+            $categorie->setDescription($content);//modifie le contenu
 
             $entityManager->persist($categorie); // on "enregistre la modif"
             $entityManager->flush(); // on l'envoie sur la BDD
