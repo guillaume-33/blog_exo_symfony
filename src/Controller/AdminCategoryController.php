@@ -85,10 +85,9 @@ class AdminCategoryController extends AbstractController
 
         $title = $request->query->get('titre');// on verifie avant toute chose ce qui est envoyé en get
         $color = $request->query->get('color');// on verifie avant toute chose ce qui est envoyé en get
-       
+
         if(!empty($title) &&//on verifie ce qui a ete envoyé en get, si il n'y a rien on fait la suite!
             !empty($color)) {
-
 
             $categorie = $categoryRepository->find($id); //cherche la categorie par l'id
 
@@ -102,7 +101,7 @@ class AdminCategoryController extends AbstractController
             $this->addFlash('success', 'categorie modifiée');
             return $this->redirectToRoute('admin_categories');
         }
-        $this ->addFlash('error', 'un probleme est survenue');
+        $this ->addFlash('error', 'un probleme est survenu');
         return $this->render('Admin/formulaire.html.twig');
 
     }
