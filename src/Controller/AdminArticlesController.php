@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\ArticleType;
 use \Symfony\Component\HttpFoundation;
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
@@ -34,23 +35,28 @@ class AdminArticlesController extends AbstractController
      */
     // je créé une nouvelle methode pour la création de nouveaux articles
     // Grace a EntityManager qui est un service Doctrine qui nous permet de manipuler des entités (Entity)
-    public function insertArticles(EntityManagerInterface $entityManager)
+    public function insertArticles(EntityManagerInterface $entityManager , HttpFoundation\Request $request)
     {
-
+        //on créé un 'gabarit' via cmd avec "php bin/console make:form"
         $article = new Article();
 
-        //je reintegre les données voulue grace au seter
-        $article->setTilte("toto a la plage");
-        $article->setContent("ila pas pris sa bouée ce con !!!");
-        $article->setImage("www.goole.fr");
-        $article->setAuthor("Moi meme");
-        $article->setIsPublished(true);
-
-        //grace a entitymanager, je peux directement enregistrer les données dans la BDD dans la table article
-        $entityManager->persist($article); //equivalent git add . et commit (on charge les données)
-        $entityManager->flush(); //equivalent push (on envoie les données)
-        $this->addFlash('success', 'article créé');// message envoyé si succés
-        return $this->redirectToRoute('admin_articles');//redirige sur la page des artocles une fois fini
+        $form=$this->createForm( ArticleType::class,$article);//permet de créer automatiquement un formulaire avec les infos qui sont sur la table dans la BDD
+        // on le renvoi vers une page twig qui contiendra la commande {{ form(form) }} pour afficher le formulaire
+        return $this->render('Admin/insert_articles.html.twig',[
+            'form'=>$form->createView()
+        ]);
+//        //je reintegre les données voulue grace au seter
+//        $article->setTilte("toto a la plage");
+//        $article->setContent("ila pas pris sa bouée ce con !!!");
+//        $article->setImage("www.goole.fr");
+//        $article->setAuthor("Moi meme");
+//        $article->setIsPublished(true);
+//
+//        //grace a entitymanager, je peux directement enregistrer les données dans la BDD dans la table article
+//        $entityManager->persist($article); //equivalent git add . et commit (on charge les données)
+//        $entityManager->flush(); //equivalent push (on envoie les données)
+//        $this->addFlash('success', 'article créé');// message envoyé si succés
+//        return $this->redirectToRoute('admin_articles');//redirige sur la page des artocles une fois fini
 
 
     }

@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
+use App\Form\CategorieType;
 use App\Entity\Category;
 use App\Repository\CategoryRepository;
-use ContainerCxaiLxF\getAdminCategoryControllerService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,18 +17,23 @@ class AdminCategoryController extends AbstractController
      * @Route("/admin/categorie",name="admin_insert_categorie")
      */
     public function category(EntityManagerInterface $entityManager){
-
+        //on créé un 'gabarit' via cmd avec "php bin/console make:form"
         $category =new Category();
+        $form=$this->createForm( CategorieType::class,$category);//permet de créer automatiquement un formulaire avec les infos qui sont sur la table dans la BDD
+        // on le renvoi vers une page twig qui contiendra la commande {{ form(form) }} pour afficher le formulaire
+        return $this->render('admin/insert_categorie.html.twig',[
+            'form'=>$form->createView()]
+        );
 
-        $category->setIsPublished(true);
-        $category->setColor("red");
-        $category->setDescription('canicule');
-        $category->setTitle('informations');
-
-        $entityManager->persist($category);
-        $entityManager->flush();
-
-        dd($category);
+//        $category->setIsPublished(true);
+//        $category->setColor("red");
+//        $category->setDescription('canicule');
+//        $category->setTitle('informations');
+//
+//        $entityManager->persist($category);
+//        $entityManager->flush();
+//
+//        dd($category);
     }
 // code commenté ==> ArticlesController
 
@@ -93,7 +98,6 @@ class AdminCategoryController extends AbstractController
             $categorie = $categoryRepository->find($id); //cherche la categorie par l'id.
 
             $categorie->setTitle($title); //modifie le titre
-
             $categorie->setColor($color); // modifie la couleur
             $categorie->setDescription($content);//modifie le contenu
 
