@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Repository\CategoryRepository;
+use ContainerCxaiLxF\getAdminCategoryControllerService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdminCategoryController extends AbstractController
@@ -72,6 +74,37 @@ class AdminCategoryController extends AbstractController
                 $entityManager->flush();// envoie ver la BDD
             $this->addFlash('success', 'categorie supprimée'); // pour afficher un message confirmant que c'est suppirmé.
             return $this->redirectToRoute('admin_categories'); //renvoie a la page des categories
+    }
+
+
+    /**
+     * @Route("admin/categorie/update/{id}" , name="admin_update_categorie")
+     */
+
+    public function updateCategoie( $id , CategoryRepository $categoryRepository , EntityManagerInterface $entityManager ,Request $request){
+
+        $title = $request->query->get('titre');// on verifie avant toute chose ce qui est envoyé en get
+        $color = $request->query->get('color');// on verifie avant toute chose ce qui est envoyé en get
+       
+        if(!empty($title) &&//on verifie ce qui a ete envoyé en get, si il n'y a rien on fait la suite!
+            !empty($color)) {
+
+
+            $categorie = $categoryRepository->find($id); //cherche la categorie par l'id
+
+            $categorie->setTitle($title); //modifie le titre
+
+            $categorie->setColor($color); // modifie la couleur
+
+            $entityManager->persist($categorie); // on "enregistre la modif"
+            $entityManager->flush(); // on l'envoie sur la BDD
+
+            $this->addFlash('success', 'categorie modifiée');
+            return $this->redirectToRoute('admin_categories');
+        }
+        $this ->addFlash('error', 'un probleme est survenue');
+        return $this->render('Admin/formulaire.html.twig');
+
     }
 
 

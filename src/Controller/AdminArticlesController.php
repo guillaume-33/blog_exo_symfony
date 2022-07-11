@@ -69,6 +69,7 @@ class AdminArticlesController extends AbstractController
             }else{ // si l'article est deja supprimé, on obtient un message qui nous le précise.
                 $this->addFlash('error', 'article déjà supprimé');
 
+
             }
 
         }
@@ -80,6 +81,7 @@ class AdminArticlesController extends AbstractController
 
             $article=$articleRepository->find($id); //on recherche l'article par son ID
             $article->setTilte('toto cherche son pere'); // on modifie son titre
+            $article->setContent("il a besoin de ta bouée toto !");
 
             $entityManager->persist($article); // on "enregistre la modif"
             $entityManager->flush(); // on l'envoie sur la BDD
@@ -103,7 +105,5 @@ class AdminArticlesController extends AbstractController
         return $this->render('admin/article.html.twig',
             ['article'=> $article]);
     }
-
-
 
 }
