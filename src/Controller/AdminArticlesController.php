@@ -94,16 +94,31 @@ class AdminArticlesController extends AbstractController
     /**
      * @Route("/admin/update/article/{id}", name="admin_update_article")
      */
-        public function updateArticle($id,ArticleRepository $articleRepository, EntityManagerInterface $entityManager){
+        public function updateArticle($id,ArticleRepository $articleRepository, EntityManagerInterface $entityManager , HttpFoundation\Request $request){
 
             $article=$articleRepository->find($id); //on recherche l'article par son ID
-            $article->setTilte('toto cherche son pere'); // on modifie son titre
-            $article->setContent("il a besoin de ta bouée toto !");
+//            $article->setTilte('toto cherche son pere'); // on modifie son titre
+//            $article->setContent("il a besoin de ta bouée toto !");
+            $form=$this->createForm( ArticleType::class,$article);//permet de créer automatiquement un formulaire avec les
+            // infos qui sont sur la table dans la BDD
 
+            $form->handleRequest($request);//on créé une instance de la calasse request a ce qui est dans le formulaire pour que celui ci puisse récuperer les données des champs remplis et faire des enregirstrement sue l'entity articles automatiquement.
+
+            //on verifie que l'article a été envoyé et est valide ( avec toutes les infos nécessaires) puis en on enregistre avec  persist et on enregistre avec flush.
+            if($form->isSubmitted() && $form->isValid()){
+                $entityManager->persist($article);
+                $entityManager->flush();
+                $this->addFlash('success', 'Article modifié');
+            }
+
+            // on le renvoi vers une page twig qui contiendra la commande {{ form(form) }} pour afficher le formulaire
+            return $this->render('Admin/update_articles.html.twig',[
+                'form'=>$form->createView()
+            ]);
             $entityManager->persist($article); // on "enregistre la modif"
             $entityManager->flush(); // on l'envoie sur la BDD
 
-            $this->addFlash('success', 'article modifié'); // pour afficher un message confirmant que c'est modifier.
+
            return $this->redirectToRoute('home'); //renvoie a la page accueil
         }
 
