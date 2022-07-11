@@ -86,11 +86,11 @@ class AdminCategoryController extends AbstractController
         $title = $request->query->get('titre');// on verifie avant toute chose ce qui est envoyé en get
         $color = $request->query->get('color');// on verifie avant toute chose ce qui est envoyé en get
         $content=$request->query->get('contenu');//on verifie avant toute chose ce qui est envoyé en get
-        
+
         if(!empty($title) &&
             !empty($color)) {//on verifie ce qui a ete envoyé en get, si il n'y a rien on fait la suite!
 
-            $categorie = $categoryRepository->find($id); //cherche la categorie par l'id
+            $categorie = $categoryRepository->find($id); //cherche la categorie par l'id.
 
             $categorie->setTitle($title); //modifie le titre
 
@@ -100,11 +100,11 @@ class AdminCategoryController extends AbstractController
             $entityManager->persist($categorie); // on "enregistre la modif"
             $entityManager->flush(); // on l'envoie sur la BDD
 
-            $this->addFlash('success', 'categorie modifiée');
-            return $this->redirectToRoute('admin_categories');
+            $this->addFlash('success', 'categorie modifiée');//message de confirmation
+            return $this->redirectToRoute('admin_categories');//retour sur la page categories
         }
-        $this ->addFlash('error', 'un probleme est survenu');
-        return $this->render('Admin/formulaire.html.twig');
+        $this ->addFlash('error', 'un probleme est survenu');//message d'erreur
+        return $this->render('Admin/formulaire.html.twig');// on reste sur la meme page
 
     }
 
