@@ -42,6 +42,14 @@ class Article
      */
     private $content;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category")
+     */
+    private $category;
+    //permet de créer unne cardinalité entre articles et category. (manyToone=> une categorie peut avoir plusieurs articles mais un article ne peut avoir qu'une seule categorie
+    //une fois que c'est fait, on fait nos migrations avec  "php bin/console make:migration" puis avec "php bin/console doctrine:migrations:migrate".
+    //on assigne une categorie a nos article puis on modifie le twig-->
+
     public function getId(): ?int
     {
         return $this->id;
@@ -106,4 +114,23 @@ class Article
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param mixed $category
+     */
+    public function setCategory($category): void
+    {
+        $this->category = $category;
+    }
+
+
+
 }

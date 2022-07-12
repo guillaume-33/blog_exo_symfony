@@ -10,6 +10,12 @@
         {% if article.isPublished %}
             <article class="articles_total">
                 <h2> {{ article.tilte }}</h2>
+{#                on affiche les categorie qui sont "reliées" à nos articles en verifiant avant grace au IF si l'article possède bien une categorie#}
+                {% if article.category %}
+                    <p>{{ article.category.title }}</p>
+                {% else %}
+                    <p>Pas de catégorie</p>
+                {% endif %}
                 <p>{{ article.content }}</p>
                 <img src="{{ article.image }}" alt="image article" >
 
