@@ -1,9 +1,12 @@
 {% extends 'base.html.twig'%}
 {% block main %}
 
+
     {% if categorie.isPublished %}
         <h2 style="color:{{ categorie.color }}">{{ categorie.title }}</h2>
-        <p>{{ categorie.description }}</p>
+            {% for article in categorie.articles  %}
+                <p>{{ categorie.description }}</p>
+            {% endfor%}
         <a class="btn"href="{{ path('admin_update_categorie',{'id': categorie.id}) }}">Modifier la categorie</a>
     {% endif %}
 {% endblock %}

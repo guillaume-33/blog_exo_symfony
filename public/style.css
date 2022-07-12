@@ -9,7 +9,7 @@ h1{
 header{
    display:flex;
    align-items: flex-end;
-   background-color: blanchedalmond;
+   background-color: #413F54;
 
 
 }
@@ -20,7 +20,10 @@ ul{
 li{
 margin:1rem;
 list-style: none;
+}
 
+li a{
+   text-decoration: none;
 }
 
 
@@ -47,7 +50,7 @@ list-style: none;
 }
 .article_home{
    padding: 2rem;
-   max-width: 40vw;
+   max-width: 30%;
    margin: 1rem;
    border: 2px solid black;
 
@@ -58,7 +61,7 @@ list-style: none;
 
 .articles_total{
    padding: 2rem;
-   max-width: 40vw;
+   max-width: 30%;
    margin: 1rem;
    border: 2px solid black;
 
@@ -69,7 +72,7 @@ list-style: none;
 }
 
 footer{
-   background-color: blanchedalmond;
+   background-color: #413F54  ;
    height: 5rem;
 }
 input {
@@ -124,14 +127,15 @@ button:hover{
    padding: 7px 20px;
    border-radius: 5px;
    font-weight: 700;
-   color: #413F54;
+   color: white;
    text-decoration: none;
    text-transform: uppercase;
+   background-color: #413F54;
 }
 
 .btn:hover {
-   background-color: #413F54;
-   color: white;
+   opacity: 80%;
+   cursor: pointer;
 }
 
 .alert-success{
@@ -148,5 +152,10 @@ button:hover{
 
 .formulaire_insert{
    margin-left: 40vw;
+}
+
+.form-article-content-widget{
+   width: 300px;
+   height: 150px;
 }
 

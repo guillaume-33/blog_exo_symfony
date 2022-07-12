@@ -13,9 +13,12 @@
 </div>
 
 <div class="container" >
+    <div class="row">
+
 {%for article in dernierArticles %}
     {% if article.isPublished %}
-                <article class="article_home">
+
+                <article class="article_home col-12 col-md-4">
                     <h2> {{ article.tilte }}</h2>
                     <p>{{ article.content }}</p>
                     <img src="{{ article.image }}" alt="image article" >
@@ -25,6 +28,8 @@
 
     {% endif %}
 {% endfor %}
+
+    </div>
 </div>
 
 {% endblock %}

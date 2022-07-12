@@ -8,20 +8,24 @@
 <div class="container">
    {%for article in articles %}
         {% if article.isPublished %}
-            <article class="articles_total">
-                <h2> {{ article.tilte }}</h2>
-{#                on affiche les categorie qui sont "reliées" à nos articles en verifiant avant grace au IF si l'article possède bien une categorie#}
-                {% if article.category %}
-                    <p>{{ article.category.title }}</p>
-                {% else %}
-                    <p>Pas de catégorie</p>
-                {% endif %}
-                <p>{{ article.content }}</p>
-                <img src="{{ article.image }}" alt="image article" >
+            <div class="container">
+                <div class="row">
+                <article class="articles_total col-12 col-md-4">
+                    <h2> {{ article.tilte }}</h2>
+    {#                on affiche les categorie qui sont "reliées" à nos articles en verifiant avant grace au IF si l'article possède bien une categorie#}
+                    {% if article.category %}
+                        <p>{{ article.category.title }}</p>
+                    {% else %}
+                        <p>Pas de catégorie</p>
+                    {% endif %}
+                    <p>{{ article.content }}</p>
+                    <img src="{{ article.image }}" alt="image article" >
 
-                <a class="btn" href="{{ path('admin_article', {'id': article.id}) }}"> en savoir plus</a>
-                <a class="btn"href="{{ path('admin_delete_article',{'id': article.id}) }}">Supprimer l'article</a>
-            </article>
+                    <a class="btn" href="{{ path('admin_article', {'id': article.id}) }}"> en savoir plus</a>
+                    <a class="btn"href="{{ path('admin_delete_article',{'id': article.id}) }}">Supprimer l'article</a>
+                </article>
+                </div>
+            </div>
         {% endif %}
     {% endfor %}
 </div>

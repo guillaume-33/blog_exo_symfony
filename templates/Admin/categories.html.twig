@@ -2,11 +2,13 @@
 {% block main %}
     <h1>Les categories</h1>
     <a class="btn" href="{{ path('admin_insert_categorie') }}">Créer categorie</a>
+
     {% for categorie in categories %}
         {% if categorie.isPublished %}
             <h2 style="color:{{ categorie.color }}">{{ categorie.title }}</h2>
             <p>{{ categorie.description }}</p>
         {% endif %}
+
         <a class="btn" href="{{ path('admin_categorie', {'id': categorie.id}) }}">En savoir plus</a>
         <a class="btn" href="{{ path('admin_delete_categorie' , {'id':categorie.id})  }}"> Supprimer la categorie</a>
     {% endfor %}

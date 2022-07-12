@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +37,18 @@ class Category
      * @ORM\Column(type="boolean")
      */
     private $isPublished;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="category")
+     */
+    //je créé une nouvelle cardinatilé entre categorie et article
+    // je demande de recupérer les articles existants liés a une categorie
+    private $articles;
+    //je créé une fonction __consruct(double underscrore) ( cette fonction aura toujours le meme nom, c'est lié a syfony)
+    // qui a pour but d'afficher tous les articles trouvés.
+    public function __construct(){
+        $this->articles= new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -89,4 +102,22 @@ class Category
 
         return $this;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getArticles()
+    {
+        return $this->articles;
+    }
+
+    /**
+     * @param ArrayCollection $articles
+     */
+    public function setArticles($articles): void
+    {
+        $this->articles = $articles;
+    }
+
+
 }
