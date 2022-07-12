@@ -1,7 +1,33 @@
 {% extends'base.html.twig' %}
 {% block main %}
     <div class="formulaire_insert">
-    {{ form(form) }}
+{#    {{ form(form) }}#}
+        {{ form_start (form )}}
+
+            {{ form_label(form.tilte, 'Titre', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.tilte, {'attr': {'class': 'form-article-title-widget'}}) }}
+
+            {{ form_label(form.content , 'Contenu',{'label_attr':{'class':'form-label' }})}}
+            {{ form_widget(form.content , {'attr': {'class': 'form-article-content-widget'}}) }}
+
+            {{ form_label(form.isPublished, 'Publication', {'label_attr':{'class':'form-label'}}) }}
+            {{ form_widget(form.isPublished, {'attr':{'class':'form-article-isPublished-widget'}}) }}
+
+            {{ form_label(form.category, 'Catégorie', {'label_attr':{'class':'form-label'}}) }}
+            {{ form_widget(form.category, {'attr': {'class':'form-article-category'}}) }}
+
+            {{ form_label(form.image, 'Image', {'label_attr':{'class':'form-label'}}) }}
+            {{ form_widget(form.image, {'attr': {'class':'form-article-image'}}) }}
+
+            {{ form_label(form.author, 'Auteur', {'label_attr':{'class':'form-label'}}) }}
+            {{ form_widget(form.author, {'attr': {'class':'form-article-author'}}) }}
+
+            {{ form_widget(form.Confirmer, {'attr': {'class': 'btn btn-primary'}}) }}
+
+
+        {{ form_end(form) }}
+
+
     </div>
 
 {% endblock %}
