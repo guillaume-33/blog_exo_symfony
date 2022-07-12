@@ -46,9 +46,9 @@ class Article
      * @ORM\ManyToOne(targetEntity="App\Entity\Category")
      */
     private $category;
-    //permet de créer unne cardinalité entre articles et category. (manyToone=> une categorie peut avoir plusieurs articles mais un article ne peut avoir qu'une seule categorie
+    //permet de créer une cardinalité entre articles et category. (manyToone=> une categorie peut avoir plusieurs articles mais un article ne peut avoir qu'une seule categorie
     //une fois que c'est fait, on fait nos migrations avec  "php bin/console make:migration" puis avec "php bin/console doctrine:migrations:migrate".
-    //on assigne une categorie a nos article puis on modifie le twig-->
+    //on assigne une categorie a nos article directement sur la BDD (php myAdmin) puis on modifie le twig-->
 
     public function getId(): ?int
     {

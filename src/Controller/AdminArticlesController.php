@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\ArticleType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use \Symfony\Component\HttpFoundation;
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
