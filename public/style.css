@@ -22,6 +22,10 @@ margin:1rem;
 list-style: none;
 
 }
+
+img{
+   width: 25%;
+}
 /* Css Aticles solo*/
 .article_solo{
    text-align: center;
