@@ -100,27 +100,22 @@ class AdminCategoryController extends AbstractController
 
     public function updateCategoie( $id , CategoryRepository $categoryRepository , EntityManagerInterface $entityManager ,Request $request){
 
-        $title = $request->query->get('titre');// on verifie avant toute chose ce qui est envoyé en get
-        $color = $request->query->get('color');// on verifie avant toute chose ce qui est envoyé en get
-        $content=$request->query->get('contenu');//on verifie avant toute chose ce qui est envoyé en get
 
-        if(!empty($title) &&
-            !empty($color)) {//on verifie ce qui a ete envoyé en get, si il n'y a rien on fait la suite!
 
-            $categorie = $categoryRepository->find($id); //cherche la categorie par l'id.
+            $category = $categoryRepository->find($id); //cherche la categorie par l'id.
+        $form=$this->createForm(CategorieType::class, $category);
 
-            $categorie->setTitle($title); //modifie le titre
-            $categorie->setColor($color); // modifie la couleur
-            $categorie->setDescription($content);//modifie le contenu
+        $form->handleRequest($request);
 
-            $entityManager->persist($categorie); // on "enregistre la modif"
-            $entityManager->flush(); // on l'envoie sur la BDD
-
-            $this->addFlash('success', 'categorie modifiée');//message de confirmation
-            return $this->redirectToRoute('admin_categories');//retour sur la page categories
+        if($form->isSubmitted() && $form->isValid()){
+            $entityManager->persist($category);
+            $entityManager->flush();
+            $this->addFlash('success', 'Categorie enregistré');
         }
-        $this ->addFlash('error', 'un probleme est survenu');//message d'erreur
-        return $this->render('Admin/formulaire.html.twig');// on reste sur la meme page
+        return $this->render('admin/formulaire.html.twig',[
+                'form'=>$form->createView()]
+        );
+            $this->addFlash('success', 'categorie modifiée');//message de confirmation
 
     }
 

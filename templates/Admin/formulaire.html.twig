@@ -2,18 +2,8 @@
 
 {% block main %}
 
-<div class="formulaire">
-    <form action="" method="GET">
-        <label for="titre">Modifier le titre</label>
-        <input type="text" name="titre" id="titre">
-
-        <label for="contenu">Modifier le contenu</label>
-        <input type="text" name="contenu" id="contenu">
-
-        <label for ="color">Modifier la couleur</label>
-        <input type="color" name="color" id="color">
-
-        <button>Validation</button>
-    </form>
+    <div class="formulaire_insert">
+        {{ form(form) }}
+    </div>
 
 {% endblock %}
