@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+    {%for article in articles %}
+        {% if article.isPublished %}
+
+            <article class="col-12 col-md-4 search_article ">
+                <h2> {{ article.tilte }}</h2>
+                <p>{{ article.content }}</p>
+                <img src="{{ article.image }}" alt="image article" >
+
+                <a class="btn" href="{{ path('admin_article', {'id': article.id}) }}"> en savoir plus</a>
+            </article>
+
+        {% endif %}
+    {% endfor %}
+{% endblock %}

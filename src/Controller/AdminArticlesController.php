@@ -10,6 +10,7 @@ use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use http\Env\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdminArticlesController extends AbstractController
@@ -139,4 +140,20 @@ class AdminArticlesController extends AbstractController
             ['article'=> $article]);
     }
 
+    /**
+     * @Route("/admin/articles/search", name="admin_search_articles")
+     */
+    public function searchArticles(Request $request , ArticleRepository $articleRepository){
+        // on recupere les informations voulues dns l'url avec le GET
+        $search= $request->query->get('search');
+
+        // on utilise 'articleRepository' pour CREER une instance serchByWord qui n'est pas native a articleRepository mais apellée depuis la function créée dans ArticleRepository.
+        // cette méthode permet de trouver l'article en fonction du mot clé
+        $articles=$articleRepository->searchByWord($search);
+
+        //je renvoie le resultat sur un fichier twig
+        return $this->render('admin/search_articles.html.twig',[
+            'articles'=> $articles
+        ]);
+    }
 }

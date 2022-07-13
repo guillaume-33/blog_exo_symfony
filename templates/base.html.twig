@@ -14,11 +14,18 @@
     {% endblock %}
 </head>
     <header>
+        <form action="{{ path ('admin_search_articles') }}" method="get" >
+            <label for="search">Recherche</label>
+            <input type="text" id="search" name="search">
+            <button>Rechercher</button>
+
+        </form>
         <ul>
             <li> <a class="btn_nav" href=" {{ path('home') }} " >Acceuil</a>  </li>
             <li> <a class="btn_nav" href="{{ path('admin_articles') }}">Nos articles</a></li>
             <li><a class="btn_nav" href="{{ path('admin_categories') }}"> Nos categories</a> </li>
         </ul>
+
     </header>
 
 {% for message in app.flashes('success') %}

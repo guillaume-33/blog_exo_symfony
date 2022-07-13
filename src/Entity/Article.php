@@ -46,7 +46,8 @@ class Article
      * @ORM\ManyToOne(targetEntity="App\Entity\Category")
      */
     private $category;
-    //permet de créer une cardinalité entre articles et category. (manyToone=> une categorie peut avoir plusieurs articles mais un article ne peut avoir qu'une seule categorie
+    // La relation ManyToOne Créée une clé étrangère permettant de lier articles & catégories
+    //(manyToone=> une categorie peut avoir plusieurs articles mais un article ne peut avoir qu'une seule categorie
     //une fois que c'est fait, on fait nos migrations avec  "php bin/console make:migration" puis avec "php bin/console doctrine:migrations:migrate".
     //on assigne une categorie a nos article directement sur la BDD (php myAdmin) puis on modifie le twig-->
 
@@ -134,3 +135,10 @@ class Article
 
 
 }
+
+//dans cmder j'ordonne de migrer mes infos php vers la table SQL. un comparatif sera fait entre
+// les infos préexistantes et les nouvelles pour une MAJ
+//fait en 2 temps :
+//php bin/console make:migration
+//bien vérifier mes infos dans le dossier migrations avant de migrer définitivement vers ma table
+// puis php bin/console doctrine:migration:migrat

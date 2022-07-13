@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @extends ServiceEntityRepository<Article>
@@ -39,28 +40,24 @@ class ArticleRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Article[] Returns an array of Article objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('a.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function searchByWord($search){
+    //createQueryBuilder permet de faire une requete SQL mais avec du PHP
+        $qb= $this->createQueryBuilder('article');
 
-//    public function findOneBySomeField($value): ?Article
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //on fait un select sur la table 'article'
+        $query= $qb->select('article')
+
+    // on recupere les articles avec dont le titre contient le (:word) mot  recherché
+        ->where('article.tilte LIKE :search')
+
+    //la valeur de ':word' est definie et correspond au mot recherché.
+    // on indique grace au '%' que le mot peut etre entouré d'autre caracteres (permet une recherche par mot clé et nom en ' aboslu sur uniquement le mot tapé
+        ->setParameter('search', '%'.$search.'%')
+
+       //on recupere la requete genérée.
+        ->getQuery();
+
+        // on envoie les resultats via la BDD
+    return $query->getResult();
+    }
 }
