@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
- * @UniqueEntity("tilte",message= "ce titre existe déja") // permet de vérifier qu'il existe un seul article avec un élément defini ( ici le titre) puis renvoie un message d'erreur voulu cote client (ici ce titre existe deja).
+ * @UniqueEntity("tilte",message= "ce titre existe déja") // permet de vérifier qu'il existe un seul article avec un élément defini ( ici le titre) puis renvoie un message d'erreur voulu cote client (ici: ce titre existe deja).
     ne pas oublier d'utiliser le (Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;)
  */
 class Article
