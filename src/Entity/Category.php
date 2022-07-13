@@ -41,10 +41,10 @@ class Category
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="category")
      */
-    //je créé une nouvelle cardinatilé entre categorie et article
+    //je fait le lien entre les  entites "categorie" et "article"
     // je demande de recupérer les articles existants liés a une categorie
     private $articles;
-    //je créé une fonction __consruct(double underscrore) ( cette fonction aura toujours le meme nom, c'est lié a syfony)
+    //je créé une fonction __consruct(double underscrore) (cette fonction aura toujours le meme nom, c'est lié a PHP)
     // qui a pour but d'afficher tous les articles trouvés.
     public function __construct(){
         $this->articles= new ArrayCollection();
