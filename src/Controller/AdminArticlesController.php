@@ -147,7 +147,7 @@ class AdminArticlesController extends AbstractController
         // on recupere les informations voulues dns l'url avec le GET
         $search= $request->query->get('search');
 
-        // on utilise 'articleRepository' pour CREER une instance serchByWord qui n'est pas native a articleRepository mais apellée depuis la function créée dans ArticleRepository.
+        // on utilise 'articleRepository' pour CREER une methode serchByWord qui n'est pas native a articleRepository mais apellée depuis la function créée dans ArticleRepository.
         // cette méthode permet de trouver l'article en fonction du mot clé
         $articles=$articleRepository->searchByWord($search);
 

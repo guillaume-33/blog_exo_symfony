@@ -13,9 +13,9 @@ header{
 
 
 }
-ul{
+header ul{
    display: flex;
-   margin-left: 70vw;
+   margin-left: 50vw;
 }
 li{
 margin:1rem;
@@ -159,5 +159,7 @@ button:hover{
    height: 150px;
 }
 
+header form label{
 
+}
 
